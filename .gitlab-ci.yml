@@ -6,7 +6,7 @@ before_script:
   # https://github.com/serokell/nixpkgs/commit/8c60777837d7dd2beae3a30a880fa18f8b51ab13
   - ln -s $(nix-build '<nixpkgs>' --attr cacert --no-out-link)/etc/ssl/certs/ca-bundle.crt /etc/ssl/certs/ca-certificates.crt
 
-build:
+rt.zip:
   stage: build
   script: nix-shell -p flatpak --run make
   artifacts:
