@@ -13,5 +13,3 @@ build:
     paths:
     - base-platform.flatpak
     - base-sdk.flatpak
-  only:
-  - master
