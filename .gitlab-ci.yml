@@ -11,5 +11,5 @@ rt.zip:
   script: nix-shell -p flatpak --run make
   artifacts:
     paths:
-    - base-platform.flatpak
-    - base-sdk.flatpak
+    - platform.flatpak
+    - sdk.flatpak

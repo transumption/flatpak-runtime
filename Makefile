@@ -1,4 +1,4 @@
-default: base-platform.flatpak base-sdk.flatpak
+default: platform.flatpak sdk.flatpak
 
 export FLATPAK_SYSTEM_DIR = ${CURDIR}/flatpak
 export FLATPAK_USER_DIR = ${FLATPAK_SYSTEM_DIR}
@@ -10,10 +10,10 @@ setup-flathub:
 
 export VERSION = 1.6
 
-base-platform.flatpak: setup-flathub
-	flatpak install --user -y flathub org.freedesktop.BasePlatform//${VERSION}
-	flatpak build-bundle --runtime ${FLATPAK_USER_DIR}/repo $@ org.freedesktop.BasePlatform ${VERSION}
+platform.flatpak: setup-flathub
+	flatpak install --user -y flathub org.freedesktop.Platform//${VERSION}
+	flatpak build-bundle --runtime ${FLATPAK_USER_DIR}/repo $@ org.freedesktop.Platform ${VERSION}
 
-base-sdk.flatpak: setup-flathub
-	flatpak install --user -y flathub org.freedesktop.BaseSdk//${VERSION}
-	flatpak build-bundle --runtime ${FLATPAK_USER_DIR}/repo $@ org.freedesktop.BaseSdk ${VERSION}
+sdk.flatpak: setup-flathub
+	flatpak install --user -y flathub org.freedesktop.Sdk//${VERSION}
+	flatpak build-bundle --runtime ${FLATPAK_USER_DIR}/repo $@ org.freedesktop.Sdk ${VERSION}
