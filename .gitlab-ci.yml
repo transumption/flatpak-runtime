@@ -1,14 +1,12 @@
 image: nixos/nix
 
 before_script:
-  - nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs
-  - nix-channel --update
-  # https://github.com/serokell/nixpkgs/commit/8c60777837d7dd2beae3a30a880fa18f8b51ab13
-  - ln -s $(nix-build '<nixpkgs>' --attr cacert --no-out-link)/etc/ssl/certs/ca-bundle.crt /etc/ssl/certs/ca-certificates.crt
+  # https://github.com/NixOS/nixpkgs/pull/48317
+  - ln -s $(nix-build nixpkgs.nix --attr cacert --no-out-link)/etc/ssl/certs/ca-bundle.crt /etc/ssl/certs/ca-certificates.crt
 
 runtime.zip:
   stage: build
-  script: nix-shell -p flatpak --run make
+  script: nix-shell --run make
   artifacts:
     paths:
     - platform.flatpak
